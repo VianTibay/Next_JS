@@ -17,12 +17,11 @@ return NextResponse.json({ message: 'Signup API' })
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-  const schema = z.object({
-  name: z.string().min(1).max(100).optional().or(z.literal('')),
+const schema = z.object({
+  name: z.string().max(100).optional().nullable(), // pwede empty o wala
   email: z.string().email(),
   password: z.string().min(8).max(72),
 })
-
     const { name, email, password } = schema.parse(body)
 
     const existing = await prisma.user.findUnique({ where: { email } })
