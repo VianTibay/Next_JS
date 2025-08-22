@@ -1,16 +1,15 @@
-import React from 'react'; 
- import { useSession } from 'next-auth/react';
-// import { redirect } from 'next/navigation';
-import LogoutButton  from '@/components/ui/logout';{}
+import React  from "react";
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
+export default function DashboardPage() {
+return(
+  <div>
+    <h1 className="text-2xl font-bold">Welcome to your Dashboard 🎉</h1>
+    <p>You are now logged in.</p>
+    <Link href="/login">
+      <Button variant="outline">Logout</Button>
+    </Link>
+  </div>
+)
 
-
-export default function DashboardPage() { 
-  return (
-    <div>
-      <h1>Welcome to your Dashboard 🎉</h1>
-      <p>You are now logged in.</p>
-      <LogoutButton />
-    </div>
-
-  );
 }
